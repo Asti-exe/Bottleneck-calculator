@@ -9,7 +9,7 @@ export interface GPUData extends ComponentData {}
 
 export const calculatorData = {
   cpus: {
-    "AMD Ryzen 9 9950X3D": { score: 125, tier: 'enthusiast' as const, imageUrl: "https://images.pexels.com/photos/163100/circuit-circuit-board-resistor-computer-163100.jpeg?auto=compress&cs=tinysrgb&w=400" },
+    "AMD Ryzen 9 9950X3D": { score: 125, tier: 'enthusiast' as const, imageUrl: "https://www.userbenchmark.com/resources/img/generic/cpu/Search?searchTerm=" },
     "AMD Ryzen 9 9900X3D": { score: 124, tier: 'enthusiast' as const, imageUrl: "https://images.pexels.com/photos/163100/circuit-circuit-board-resistor-computer-163100.jpeg?auto=compress&cs=tinysrgb&w=400" },
     "AMD Ryzen 7 9800X3D": { score: 122, tier: 'enthusiast' as const, imageUrl: "https://images.pexels.com/photos/163100/circuit-circuit-board-resistor-computer-163100.jpeg?auto=compress&cs=tinysrgb&w=400" },
     "AMD Ryzen 9 9950X": { score: 118, tier: 'enthusiast' as const, imageUrl: "https://images.pexels.com/photos/163100/circuit-circuit-board-resistor-computer-163100.jpeg?auto=compress&cs=tinysrgb&w=400" },
