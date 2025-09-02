@@ -1,6 +1,6 @@
 import { Metadata } from 'next';
-import { motion } from 'framer-motion';
 import { Card, CardContent } from '@/components/ui/card';
+import { MotionWrapper } from '@/components/ui/motion-wrapper';
 
 export const metadata: Metadata = {
   title: 'About Us - PC Performance Calculator',
@@ -11,7 +11,7 @@ export default function AboutPage() {
   return (
     <div className="py-8 px-4">
       <div className="max-w-4xl mx-auto">
-        <motion.div
+        <MotionWrapper
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
@@ -47,7 +47,7 @@ export default function AboutPage() {
               </div>
             </CardContent>
           </Card>
-        </motion.div>
+        </MotionWrapper>
       </div>
     </div>
   );
