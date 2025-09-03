@@ -7,6 +7,7 @@ import { Button } from '@/components/ui/button';
 import { SearchableSelect } from '@/components/ui/searchable-select';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Label } from '@/components/ui/label';
+import { Badge } from '@/components/ui/badge';
 import { calculatorData, gamesData, resolutionMultipliers } from '@/lib/calculator-data';
 
 export function FpsCalculator() {
