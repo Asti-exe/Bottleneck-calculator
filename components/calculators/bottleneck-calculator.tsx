@@ -4,11 +4,12 @@ import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
+import { SearchableSelect } from '@/components/ui/searchable-select';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Label } from '@/components/ui/label';
 import { ChevronDown, ChevronUp, Settings } from 'lucide-react';
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from '@/components/ui/collapsible';
-import { calculatorData, placeholderImages, ComponentData } from '@/lib/calculator-data';
+import { calculatorData, placeholderImages, ComponentData, getSortedComponents } from '@/lib/calculator-data';
 import { BottleneckResults } from './bottleneck-results';
 
 interface CalculationResults {
@@ -100,30 +101,24 @@ export function BottleneckCalculator() {
           <div className="grid md:grid-cols-2 gap-4">
             <div className="space-y-2">
               <Label htmlFor="cpu-select">Processor (CPU)</Label>
-              <Select value={selectedCpu} onValueChange={setSelectedCpu}>
-                <SelectTrigger>
-                  <SelectValue placeholder="-- Select CPU --" />
-                </SelectTrigger>
-                <SelectContent>
-                  {Object.keys(calculatorData.cpus).map((cpu) => (
-                    <SelectItem key={cpu} value={cpu}>{cpu}</SelectItem>
-                  ))}
-                </SelectContent>
-              </Select>
+              <SearchableSelect
+                value={selectedCpu}
+                onValueChange={setSelectedCpu}
+                placeholder="-- Select CPU --"
+                options={Object.keys(calculatorData.cpus)}
+                type="cpu"
+              />
             </div>
 
             <div className="space-y-2">
               <Label htmlFor="gpu-select">Graphics Card (GPU)</Label>
-              <Select value={selectedGpu} onValueChange={setSelectedGpu}>
-                <SelectTrigger>
-                  <SelectValue placeholder="-- Select GPU --" />
-                </SelectTrigger>
-                <SelectContent>
-                  {Object.keys(calculatorData.gpus).map((gpu) => (
-                    <SelectItem key={gpu} value={gpu}>{gpu}</SelectItem>
-                  ))}
-                </SelectContent>
-              </Select>
+              <SearchableSelect
+                value={selectedGpu}
+                onValueChange={setSelectedGpu}
+                placeholder="-- Select GPU --"
+                options={Object.keys(calculatorData.gpus)}
+                type="gpu"
+              />
             </div>
           </div>
 

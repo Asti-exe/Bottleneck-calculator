@@ -176,6 +176,6 @@ export function ContactForm() {
         </div>
       </motion.div>
       <Toaster />
-    </>
+    </div>
   );
 }

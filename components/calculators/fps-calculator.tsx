@@ -4,35 +4,10 @@ import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
+import { SearchableSelect } from '@/components/ui/searchable-select';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Label } from '@/components/ui/label';
-import { calculatorData } from '@/lib/calculator-data';
-
-interface GameData {
-  baseFps: number;
-  cpuWeight: number;
-  gpuWeight: number;
-}
-
-const gamesData: Record<string, GameData> = {
-  "Cyberpunk 2077": { baseFps: 70, cpuWeight: 0.4, gpuWeight: 0.6 },
-  "Valorant": { baseFps: 350, cpuWeight: 0.7, gpuWeight: 0.3 },
-  "Call of Duty: Modern Warfare III": { baseFps: 140, cpuWeight: 0.5, gpuWeight: 0.5 },
-  "Starfield": { baseFps: 60, cpuWeight: 0.6, gpuWeight: 0.4 },
-  "Baldur's Gate 3": { baseFps: 90, cpuWeight: 0.65, gpuWeight: 0.35 },
-  "Fortnite": { baseFps: 200, cpuWeight: 0.6, gpuWeight: 0.4 },
-  "Apex Legends": { baseFps: 180, cpuWeight: 0.5, gpuWeight: 0.5 },
-  "Red Dead Redemption 2": { baseFps: 80, cpuWeight: 0.4, gpuWeight: 0.6 },
-  "The Witcher 3: Wild Hunt": { baseFps: 110, cpuWeight: 0.3, gpuWeight: 0.7 },
-  "Elden Ring": { baseFps: 60, cpuWeight: 0.5, gpuWeight: 0.5 },
-  "Counter-Strike 2": { baseFps: 300, cpuWeight: 0.7, gpuWeight: 0.3 },
-};
-
-const resolutionMultipliers = {
-  "1080p": 1.2,
-  "1440p": 1.0,
-  "4k": 0.7
-};
+import { calculatorData, gamesData, resolutionMultipliers } from '@/lib/calculator-data';
 
 export function FpsCalculator() {
   const [selectedCpu, setSelectedCpu] = useState('');
@@ -107,30 +82,24 @@ export function FpsCalculator() {
           <div className="grid md:grid-cols-2 gap-4">
             <div className="space-y-2">
               <Label htmlFor="cpu-select">Processor (CPU)</Label>
-              <Select value={selectedCpu} onValueChange={setSelectedCpu}>
-                <SelectTrigger>
-                  <SelectValue placeholder="-- Select CPU --" />
-                </SelectTrigger>
-                <SelectContent>
-                  {Object.keys(calculatorData.cpus).map((cpu) => (
-                    <SelectItem key={cpu} value={cpu}>{cpu}</SelectItem>
-                  ))}
-                </SelectContent>
-              </Select>
+              <SearchableSelect
+                value={selectedCpu}
+                onValueChange={setSelectedCpu}
+                placeholder="-- Select CPU --"
+                options={Object.keys(calculatorData.cpus)}
+                type="cpu"
+              />
             </div>
 
             <div className="space-y-2">
               <Label htmlFor="gpu-select">Graphics Card (GPU)</Label>
-              <Select value={selectedGpu} onValueChange={setSelectedGpu}>
-                <SelectTrigger>
-                  <SelectValue placeholder="-- Select GPU --" />
-                </SelectTrigger>
-                <SelectContent>
-                  {Object.keys(calculatorData.gpus).map((gpu) => (
-                    <SelectItem key={gpu} value={gpu}>{gpu}</SelectItem>
-                  ))}
-                </SelectContent>
-              </Select>
+              <SearchableSelect
+                value={selectedGpu}
+                onValueChange={setSelectedGpu}
+                placeholder="-- Select GPU --"
+                options={Object.keys(calculatorData.gpus)}
+                type="gpu"
+              />
             </div>
           </div>
 
@@ -142,8 +111,22 @@ export function FpsCalculator() {
                   <SelectValue placeholder="-- Select Game --" />
                 </SelectTrigger>
                 <SelectContent>
-                  {Object.keys(gamesData).map((game) => (
-                    <SelectItem key={game} value={game}>{game}</SelectItem>
+                  {Object.entries(gamesData)
+                    .sort(([, a], [, b]) => b.releaseYear - a.releaseYear)
+                    .map(([game, data]) => (
+                    <SelectItem key={game} value={game}>
+                      <div className="flex items-center justify-between w-full">
+                        <span>{game}</span>
+                        <div className="flex items-center gap-2 ml-2">
+                          <Badge variant="outline" className="text-xs">
+                            {data.category}
+                          </Badge>
+                          <span className="text-xs text-muted-foreground">
+                            {data.releaseYear}
+                          </span>
+                        </div>
+                      </div>
+                    </SelectItem>
                   ))}
                 </SelectContent>
               </Select>
