@@ -1,5 +1,5 @@
 import { Metadata } from 'next';
-import { BottleneckCalculator } from '@/components/calculators/bottleneck-calculator';
+import { EnhancedBottleneckCalculator } from '@/components/calculators/enhanced-bottleneck-calculator';
 import { UpdateBanner } from '@/components/ui/update-banner';
 import { InterlinkBox } from '@/components/ui/interlink-box';
 import { FAQSection } from '@/components/faq/faq-section';
@@ -29,7 +29,7 @@ export default function HomePage() {
         </div>
 
         <UpdateBanner />
-        <BottleneckCalculator />
+        <EnhancedBottleneckCalculator />
 
         <InterlinkBox
           title="Curious about gaming performance?"
