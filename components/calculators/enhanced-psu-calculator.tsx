@@ -36,7 +36,6 @@ export function EnhancedPSUCalculator() {
     name: cpu.name,
     tier: cpu.tier,
     benchmarkScore: cpu.benchmarkScore,
-    imageUrl: cpu.imageUrl,
     specs: `${cpu.cores}C/${cpu.threads}T, ${cpu.tdp}W TDP`,
     price: cpu.currentPrice
   }));
@@ -46,7 +45,6 @@ export function EnhancedPSUCalculator() {
     name: gpu.name,
     tier: gpu.tier,
     benchmarkScore: gpu.benchmarkScore,
-    imageUrl: gpu.imageUrl,
     specs: `${gpu.vram}GB VRAM, ${gpu.tdp}W TDP`,
     price: gpu.currentPrice
   }));

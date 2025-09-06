@@ -38,7 +38,6 @@ export function EnhancedBottleneckCalculator() {
     name: cpu.name,
     tier: cpu.tier,
     benchmarkScore: cpu.benchmarkScore,
-    imageUrl: cpu.imageUrl,
     specs: `${cpu.cores}C/${cpu.threads}T, ${cpu.boostClock}GHz, ${cpu.tdp}W`,
     price: cpu.currentPrice
   }));
@@ -49,7 +48,6 @@ export function EnhancedBottleneckCalculator() {
     name: gpu.name,
     tier: gpu.tier,
     benchmarkScore: gpu.benchmarkScore,
-    imageUrl: gpu.imageUrl,
     specs: `${gpu.vram}GB VRAM, ${gpu.boostClock}MHz, ${gpu.tdp}W`,
     price: gpu.currentPrice
   }));

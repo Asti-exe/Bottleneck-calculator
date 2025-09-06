@@ -25,7 +25,6 @@ export function EnhancedFPSCalculator() {
     name: cpu.name,
     tier: cpu.tier,
     benchmarkScore: cpu.benchmarkScore,
-    imageUrl: cpu.imageUrl,
     specs: `${cpu.cores}C/${cpu.threads}T, ${cpu.boostClock}GHz`,
     price: cpu.currentPrice
   }));
@@ -35,7 +34,6 @@ export function EnhancedFPSCalculator() {
     name: gpu.name,
     tier: gpu.tier,
     benchmarkScore: gpu.benchmarkScore,
-    imageUrl: gpu.imageUrl,
     specs: `${gpu.vram}GB VRAM, ${gpu.boostClock}MHz`,
     price: gpu.currentPrice
   }));
